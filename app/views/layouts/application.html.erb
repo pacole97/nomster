@@ -4,8 +4,8 @@
     <title>Budfeed</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'  %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  %>
   </head>
 
   <body>
@@ -23,9 +23,22 @@
           <%= link_to 'New Place', new_place_path, class: 'nav-link' %>
           <i class="fa fa-plus-circle"></i>
           New Place
-          <% end %>
+          
         </li>
       </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Sign out', method: :delete, class: 'nav-link' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+          </li>
+          <li>
+            <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+          </li>
+        <% end %>
     </div>
   </nav>
   <% if notice.present? %>
@@ -36,5 +49,7 @@
   <% end %>
   </body>
   <%= yield %>
+
 </html>
+
 

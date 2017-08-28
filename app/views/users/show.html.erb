@@ -17,7 +17,7 @@
 <h1 class="text-center">My Comments</h1>
 <br /><br />
 <div class="row">
-<%= @user.comments.each do |comment| %>
+<% @user.comments.each do |comment| %>
     <div class="col-12 col-sm-6">
     <% if comment.place.present? %>
     <h2 class="text-center">
